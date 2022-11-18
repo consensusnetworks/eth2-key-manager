@@ -21,6 +21,8 @@ func NetworkFromString(n string) Network {
 		return PraterNetwork
 	case string(MainNetwork):
 		return MainNetwork
+	case string(DevNetwork):
+		return DevNetwork
 	default:
 		return ""
 	}
@@ -35,6 +37,8 @@ func (n Network) ForkVersion() []byte {
 		return []byte{0x00, 0x00, 0x10, 0x20}
 	case MainNetwork:
 		return []byte{0, 0, 0, 0}
+	case DevNetwork:
+		return []byte{0x00, 0x00, 0x10, 0x20}
 	default:
 		logrus.WithField("network", n).Fatal("undefined network")
 		return nil
@@ -50,6 +54,8 @@ func (n Network) DepositContractAddress() string {
 		return "0xff50ed3d0ec03ac01d4c79aad74928bff48a7b2b"
 	case MainNetwork:
 		return "0x00000000219ab540356cBB839Cbe05303d7705Fa"
+	case DevNetwork:
+		return "0x4242424242424242424242424242424242424242"
 	default:
 		logrus.WithField("network", n).Fatal("undefined network")
 		return ""
@@ -70,6 +76,8 @@ func (n Network) MinGenesisTime() uint64 {
 		return 1616508000
 	case MainNetwork:
 		return 1606824023
+	case DevNetwork:
+		return 1616508000
 	default:
 		logrus.WithField("network", n).Fatal("undefined network")
 		return 0
@@ -121,4 +129,7 @@ const (
 
 	// MainNetwork represents the main network.
 	MainNetwork Network = "mainnet"
+
+	// DevNetwork represents the dev network.
+	DevNetwork Network = "devnet"
 )
