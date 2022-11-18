@@ -38,7 +38,7 @@ func (n Network) ForkVersion() []byte {
 	case MainNetwork:
 		return []byte{0, 0, 0, 0}
 	case DevNetwork:
-		return []byte{0x00, 0x00, 0x10, 0x20}
+		return []byte{0x10, 0x00, 0x00, 0x38}
 	default:
 		logrus.WithField("network", n).Fatal("undefined network")
 		return nil
@@ -77,7 +77,7 @@ func (n Network) MinGenesisTime() uint64 {
 	case MainNetwork:
 		return 1606824023
 	case DevNetwork:
-		return 1616508000
+		return 1668789575
 	default:
 		logrus.WithField("network", n).Fatal("undefined network")
 		return 0
