@@ -77,7 +77,7 @@ func (n Network) MinGenesisTime() uint64 {
 	case MainNetwork:
 		return 1606824023
 	case DevNetwork:
-		return 1668789575
+		return 1668891903
 	default:
 		logrus.WithField("network", n).Fatal("undefined network")
 		return 0
